@@ -1,0 +1,4 @@
+﻿<Table TableName="inlocation">
+    <Column TableName="inlocation" ColumnName="UsrZone" ColumnType="string" AllowNull="True" MaxLength="32" DecimalPrecision="0" DecimalLength="0" IsNewColumn="True" IsUnicode="True" />
+    <Column TableName="inlocation" ColumnName="UsrPickingOrder" ColumnType="int" AllowNull="True" DecimalPrecision="0" DecimalLength="0" IsNewColumn="True" IsUnicode="True" />
+</Table>

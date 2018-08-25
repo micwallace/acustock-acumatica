@@ -1,0 +1,4 @@
+﻿<Table TableName="soshipment">
+    <Column TableName="soshipment" ColumnName="UsrPickStatus" ColumnType="string" AllowNull="True" MaxLength="2" DecimalPrecision="0" DecimalLength="0" IsNewColumn="True" IsUnicode="True" />
+    <Column TableName="soshipment" ColumnName="UsrPickedBy" ColumnType="string" AllowNull="True" MaxLength="66" DecimalPrecision="0" DecimalLength="0" IsNewColumn="True" IsUnicode="True" />
+</Table>
