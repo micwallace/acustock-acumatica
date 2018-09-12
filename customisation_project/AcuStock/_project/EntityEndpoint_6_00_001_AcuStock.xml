@@ -1,6 +1,11 @@
 ﻿<EntityEndpoint>
     <Endpoint xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="AcuStock" version="6.00.001" systemContractVersion="2" xmlns="http://www.acumatica.com/entity/maintenance/5.31">
         <ExtendsEndpoint name="Default" version="6.00.001" />
+        <TopLevelEntity name="Adjustment" screen="IN303000">
+            <Actions>
+                <Action name="ReleaseAdjustment" mappedTo="Release" />
+            </Actions>
+        </TopLevelEntity>
         <TopLevelEntity name="InventoryLocations" screen="AS000003">
             <Fields>
                 <Field name="Description" type="StringValue" />
@@ -357,6 +362,8 @@
         <TopLevelEntity name="Shipment" screen="SO302000">
             <Fields>
                 <Field name="Orders" type="ShipmentOrders[]" />
+                <Field name="PickDevice" type="StringValue" />
+                <Field name="PickStatus" type="StringValue" />
             </Fields>
             <Mappings>
                 <Mapping field="Orders">
@@ -372,6 +379,12 @@
                     <Mapping field="OrderType">
                         <To object="OrderList" field="OrderType" />
                     </Mapping>
+                </Mapping>
+                <Mapping field="PickDevice">
+                    <To object="Document" field="UsrPickDevice" />
+                </Mapping>
+                <Mapping field="PickStatus">
+                    <To object="Document" field="UsrPickStatus" />
                 </Mapping>
                 <Mapping field="Details">
                     <Mapping field="PickedQty">
@@ -412,6 +425,31 @@
                 <Field name="InventoryRefNbr" type="StringValue" />
                 <Field name="OrderNbr" type="StringValue" />
                 <Field name="OrderType" type="StringValue" />
+            </Fields>
+        </Detail>
+        <TopLevelEntity name="StockItemLookup" screen="AS000001">
+            <Fields>
+                <Field name="ItemID" type="StringValue" />
+                <Field name="Results" type="StockItemLookupResults[]" />
+            </Fields>
+            <Mappings>
+                <Mapping field="ItemID">
+                    <To object="Filter" field="ItemID" />
+                </Mapping>
+                <Mapping field="Results">
+                    <Mapping field="Description">
+                        <To object="Items" field="Descr" />
+                    </Mapping>
+                    <Mapping field="InventoryID">
+                        <To object="Items" field="InventoryCD" />
+                    </Mapping>
+                </Mapping>
+            </Mappings>
+        </TopLevelEntity>
+        <Detail name="StockItemLookupResults">
+            <Fields>
+                <Field name="Description" type="StringValue" />
+                <Field name="InventoryID" type="StringValue" />
             </Fields>
         </Detail>
         <TopLevelEntity name="Transfer" screen="IN304000">

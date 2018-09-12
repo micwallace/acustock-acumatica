@@ -20,18 +20,17 @@ namespace PX.Objects.SO
     [PXDBString(2)]
     [PXUIField(DisplayName="Pick Status")]
     [PXDefault(TypeCode.String, "1")]
-    [PXUnboundDefault("1", PersistingCheck = PXPersistingCheck.Nothing)]
-    [PXStringList(new string[] {"1","2","3","4","5","6"}, new string[] {"Open","Pick in Progress","Partially Picked","Picked","Packed","Shipped"})]
+    [PXStringList(new string[] {"1","2","3","4","5","6"}, new string[] {"Open","Assigned","Partially Picked","Picked","Packed","Shipped"})]
     public virtual string UsrPickStatus { get; set; }
     public abstract class usrPickStatus : IBqlField { }
     #endregion
 
-    #region UsrPickedBy
+    #region UsrPickDevice
     [PXDBString(66)]
-    [PXUIField(DisplayName="Picked By")]
+    [PXUIField(DisplayName="Pick Device")]
 
-    public virtual string UsrPickedBy { get; set; }
-    public abstract class usrPickedBy : IBqlField { }
+    public virtual string UsrPickDevice { get; set; }
+    public abstract class usrPickDevice : IBqlField { }
     #endregion
   }
 }

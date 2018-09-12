@@ -1,4 +1,3 @@
-//using Data.ReferentialIntegrity.Attributes;
 using PX.Data;
 using PX.Objects.CS;
 using PX.Objects.GL;
