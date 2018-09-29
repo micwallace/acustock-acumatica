@@ -1,6 +1,16 @@
 ﻿<EntityEndpoint>
     <Endpoint xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="AcuStock" version="6.00.001" systemContractVersion="2" xmlns="http://www.acumatica.com/entity/maintenance/5.31">
         <ExtendsEndpoint name="Default" version="6.00.001" />
+        <TopLevelEntity name="AcuStockConfig" screen="AS000004">
+            <Fields>
+                <Field name="Version" type="StringValue" />
+            </Fields>
+            <Mappings>
+                <Mapping field="Version">
+                    <To object="ConfigView" field="Version" />
+                </Mapping>
+            </Mappings>
+        </TopLevelEntity>
         <TopLevelEntity name="Adjustment" screen="IN303000">
             <Actions>
                 <Action name="ReleaseAdjustment" mappedTo="Release" />
@@ -427,6 +437,20 @@
                 <Field name="OrderType" type="StringValue" />
             </Fields>
         </Detail>
+        <TopLevelEntity name="StockItem" screen="IN202500">
+            <Fields>
+                <Field name="LotSerialClassAssignment" type="StringValue" />
+                <Field name="LotSerialClassTracking" type="StringValue" />
+            </Fields>
+            <Mappings>
+                <Mapping field="LotSerialClassTracking">
+                    <To object="ItemSettings" field="LotSerClassID%LotSerTrack" />
+                </Mapping>
+                <Mapping field="LotSerialClassAssignment">
+                    <To object="ItemSettings" field="LotSerClassID%LotSerAssign" />
+                </Mapping>
+            </Mappings>
+        </TopLevelEntity>
         <TopLevelEntity name="StockItemLookup" screen="AS000001">
             <Fields>
                 <Field name="ItemID" type="StringValue" />

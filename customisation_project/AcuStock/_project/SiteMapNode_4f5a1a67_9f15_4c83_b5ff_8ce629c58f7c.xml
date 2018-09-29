@@ -25,7 +25,7 @@
         </layout>
         <data>
             <sitemap>
-                <row Position="2308" Title="Inventory Locations" Url="~/Pages/AS/AS000003.aspx" Expanded="0" IsFolder="0" ScreenID="AS000003" NodeID="23a403c6-2a3d-45e2-8b93-6d66fb9b1bb6" ParentID="84351bc9-bf6c-48b5-9dea-f8207283b64a" />
+                <row Position="3" Title="Inventory Locations" Url="~/Pages/AS/AS000003.aspx" Expanded="0" IsFolder="0" ScreenID="AS000003" NodeID="4f5a1a67-9f15-4c83-b5ff-8ce629c58f7c" ParentID="9d64ee06-5faa-4397-8687-510e4fe6d236" />
             </sitemap>
         </data>
     </data-set>

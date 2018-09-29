@@ -73,6 +73,7 @@
     <Compile Include="SOShipmentEntry.cs" />
     <Compile Include="SOShipmentExtensions.cs" />
     <Compile Include="InventoryLookup.cs" />
+<Compile Include="AcuStockVersion.cs" />
 <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

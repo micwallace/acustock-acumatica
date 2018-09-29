@@ -25,7 +25,7 @@
         </layout>
         <data>
             <sitemap>
-                <row Position="2309" Title="Inventory Serial/Lot" Url="~/Pages/AS/AS000002.aspx" Expanded="0" IsFolder="0" ScreenID="AS000002" NodeID="c5d13017-1f63-4584-b8ac-2a9efb1a3aba" ParentID="84351bc9-bf6c-48b5-9dea-f8207283b64a" />
+                <row Position="4" Title="AcuStock Config" Url="~/Pages/AS/AS000004.aspx" Expanded="0" IsFolder="0" ScreenID="AS000004" NodeID="1e2743c2-452a-42e8-ba97-0d6c18ebdf1d" ParentID="9d64ee06-5faa-4397-8687-510e4fe6d236" />
             </sitemap>
         </data>
     </data-set>
