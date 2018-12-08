@@ -1021,10 +1021,10 @@
             <Mappings>
                 <Mapping field="Locations">
                     <Mapping field="PickingOrder">
-                        <To object="location" field="UsrASPickingOrder" />
+                        <To object="location" field="UsrFRPickSequence" />
                     </Mapping>
                     <Mapping field="Zone">
-                        <To object="location" field="UsrASZone" />
+                        <To object="location" field="UsrFRZone" />
                     </Mapping>
                 </Mapping>
             </Mappings>

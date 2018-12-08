@@ -117,7 +117,7 @@
                         </girelation>
                         <giresult LineNbr="8" IsActive="1" Field="shipmentQty" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="85b78b22-8e2f-4fa4-820d-0b3597c30ef8" />
                         <giresult LineNbr="7" IsActive="1" Field="usrASPickDevice" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="0fbc155a-0b20-4ab8-b90c-818cc71d9c95" />
-                        <giresult LineNbr="6" IsActive="1" Field="usrASPickStatus" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="8c271937-1070-4fde-81f3-d91d2b2931cc" />
+                        <giresult LineNbr="6" IsActive="1" Field="usrFRPickStatus" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="8c271937-1070-4fde-81f3-d91d2b2931cc" />
                         <giresult LineNbr="5" IsActive="1" Field="status" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="5dde127c-8a00-4cea-9a75-eada7a572ad1" />
                         <giresult LineNbr="4" IsActive="1" Field="operation" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="25c348c1-c216-4ecc-9d7a-96a6029ac41d" />
                         <giresult LineNbr="3" IsActive="1" Field="shipmentType" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="07c495e6-2ea2-44b8-b142-97de6040fc24" />
