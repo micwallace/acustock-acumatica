@@ -764,7 +764,7 @@
                     <To object="Document" field="UsrASPickDevice" />
                 </Mapping>
                 <Mapping field="PickStatus">
-                    <To object="Document" field="UsrASPickStatus" />
+                    <To object="Document" field="UsrFRPickStatus" />
                 </Mapping>
                 <Mapping field="Details">
                     <Mapping field="PickedQty">
