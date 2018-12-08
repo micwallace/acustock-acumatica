@@ -74,11 +74,11 @@
                 <Field name="InclQtyPOOrders" type="BooleanValue" />
                 <Field name="InclQtyPOPrepared" type="BooleanValue" />
                 <Field name="InclQtyPOReceipts" type="BooleanValue" />
+                <Field name="InclQtySOAllocated" type="BooleanValue" />
                 <Field name="InclQtySOBackOrdered" type="BooleanValue" />
                 <Field name="InclQtySOBooked" type="BooleanValue" />
                 <Field name="InclQtySOPrepared" type="BooleanValue" />
                 <Field name="InclQtySOShipped" type="BooleanValue" />
-                <Field name="InclQtySOShipping" type="BooleanValue" />
                 <Field name="INIssues" type="DecimalValue" />
                 <Field name="INReceipts" type="DecimalValue" />
                 <Field name="InTransit" type="DecimalValue" />
@@ -132,7 +132,7 @@
                 <Mapping field="InclQtySOShipped">
                     <To object="Filter" field="InclQtySOShipped" />
                 </Mapping>
-                <Mapping field="InclQtySOShipping">
+                <Mapping field="InclQtySOAllocated">
                     <To object="Filter" field="InclQtySOShipping" />
                 </Mapping>
                 <Mapping field="Label">
