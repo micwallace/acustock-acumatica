@@ -809,6 +809,7 @@
                 <Field name="ShippedQuantity" type="DecimalValue" />
                 <Field name="Status" type="StringValue" />
                 <Field name="Type" type="StringValue" />
+                <Field name="WarehouseID" type="StringValue" />
             </Fields>
             <Mappings>
                 <Mapping field="Operation">
@@ -830,10 +831,13 @@
                     <To object="Results" field="Shipment_status" />
                 </Mapping>
                 <Mapping field="PickDevice">
-                    <To object="Results" field="usrASPickDevice" />
+                    <To object="Results" field="Shipment_usrASPickDevice" />
                 </Mapping>
                 <Mapping field="PickStatus">
-                    <To object="Results" field="usrASPickStatus" />
+                    <To object="Results" field="Shipment_usrASPickStatus" />
+                </Mapping>
+                <Mapping field="WarehouseID">
+                    <To object="Results" field="Warehouse_siteCD" />
                 </Mapping>
             </Mappings>
         </TopLevelEntity>

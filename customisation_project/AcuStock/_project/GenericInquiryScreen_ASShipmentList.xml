@@ -108,7 +108,13 @@
             <gidesign>
                 <row DesignID="098f6ba4-3f64-46f6-a2ff-662933b830f7" Name="ASShipmentList" FilterColCount="3" PageSize="0" ExportTop="0" NewRecordCreationEnabled="0" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="0">
                     <gisort LineNbr="1" IsActive="1" DataFieldName="Shipment.shipDate" SortOrder="A" />
+                    <gitable Alias="Warehouse" Name="PX.Objects.IN.INSite">
+                        <giresult LineNbr="9" IsActive="1" Field="siteCD" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="a35f57f6-40de-4cb4-9ee4-350f96a36427" />
+                    </gitable>
                     <gitable Alias="Shipment" Name="PX.Objects.SO.SOShipment">
+                        <girelation LineNbr="1" ChildTable="Warehouse" IsActive="1" JoinType="I">
+                            <gion LineNbr="1" ParentField="siteID" Condition="E" ChildField="siteID" Operation="A" />
+                        </girelation>
                         <giresult LineNbr="8" IsActive="1" Field="shipmentQty" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="85b78b22-8e2f-4fa4-820d-0b3597c30ef8" />
                         <giresult LineNbr="7" IsActive="1" Field="usrASPickDevice" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="0fbc155a-0b20-4ab8-b90c-818cc71d9c95" />
                         <giresult LineNbr="6" IsActive="1" Field="usrASPickStatus" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="8c271937-1070-4fde-81f3-d91d2b2931cc" />
