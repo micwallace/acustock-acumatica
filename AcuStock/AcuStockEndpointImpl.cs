@@ -160,7 +160,6 @@ namespace AcuStock
                     newtran.ARLineNbr = null;
                     newtran.ProjectID = null;
                     newtran.TaskID = null;
-                    newtran.CostCodeID = null;
                     newtran.TranCost = 0m;
 
                     receiptEntry.splits.Current = null;

@@ -3,7 +3,7 @@
         <Children Key="Columns">
             <AddItem>
                 <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
-                    <Prop Key="DataField" Value="UsrQtyPicked" />
+                    <Prop Key="DataField" Value="UsrASQtyPicked" />
                     <Prop Key="Width" Value="100" />
                 </PXGridColumn>
             </AddItem>
@@ -14,7 +14,7 @@
         <Children Key="Columns">
             <AddItem>
                 <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
-                    <Prop Key="DataField" Value="UsrQtyPicked" />
+                    <Prop Key="DataField" Value="UsrASQtyPicked" />
                     <Prop Key="Width" Value="100" />
                     <Prop Key="CommitChanges" Value="True" />
                 </PXGridColumn>
@@ -28,14 +28,14 @@
                 <PXDropDown TypeFullName="PX.Web.UI.PXDropDown">
                     <Prop Key="Virtual:ApplyStylesheetSkin" />
                     <Prop Key="ID" Value="CstPXDropDown2" />
-                    <Prop Key="DataField" Value="UsrPickStatus" />
+                    <Prop Key="DataField" Value="UsrASPickStatus" />
                 </PXDropDown>
             </AddItem>
             <AddItem>
                 <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
                     <Prop Key="Virtual:ApplyStylesheetSkin" />
                     <Prop Key="ID" Value="CstPXTextEdit4" />
-                    <Prop Key="DataField" Value="UsrPickDevice" />
+                    <Prop Key="DataField" Value="UsrASPickDevice" />
                 </PXTextEdit>
             </AddItem>
             <PXLayoutRule OriginalIndex="15" />

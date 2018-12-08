@@ -11,25 +11,23 @@ namespace PX.Objects.SO
 {
   public class SOShipLineSplitExt : PXCacheExtension<PX.Objects.SO.SOShipLineSplit>
   {
-    #region UsrQtyPicked
+    #region UsrASQtyPicked
     [PXDBDecimal]
     [PXDefault(TypeCode.Decimal, "0.0")]
     [PXUIField(DisplayName="Picked Qty.")]
-    //[PXFormula(null, typeof(SumCalc<SOShipLineExt.usrQtyPicked>))]
-    public virtual Decimal? UsrQtyPicked { get; set; }
-    public abstract class usrQtyPicked : IBqlField { }
+    public virtual Decimal? UsrASQtyPicked { get; set; }
+    public abstract class usrASQtyPicked : IBqlField { }
     #endregion
   }
       
   public class SOTableShipLineSplitExt : PXCacheExtension<PX.Objects.SO.Table.SOShipLineSplit>
   {
-    #region UsrQtyPicked
+    #region UsrASQtyPicked
     [PXDBDecimal]
     [PXDefault(TypeCode.Decimal, "0.0")]
     [PXUIField(DisplayName="Picked Qty.")]
-    //[PXFormula(null, typeof(SumCalc<SOShipLineExt.usrQtyPicked>))]
-    public virtual Decimal? UsrQtyPicked { get; set; }
-    public abstract class usrQtyPicked : IBqlField { }
+    public virtual Decimal? UsrASQtyPicked { get; set; }
+    public abstract class usrASQtyPicked : IBqlField { }
     #endregion
   }
 }

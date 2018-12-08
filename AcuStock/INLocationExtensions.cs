@@ -10,19 +10,19 @@ namespace PX.Objects.IN
 {
   public class INLocationExt : PXCacheExtension<PX.Objects.IN.INLocation>
   {
-    #region UsrZone
+    #region UsrASZone
     [PXDBString(32)]
     [PXUIField(DisplayName="Zone")]
 
-    public virtual string UsrZone { get; set; }
-    public abstract class usrZone : IBqlField { }
+    public virtual string UsrASZone { get; set; }
+    public abstract class usrASZone : IBqlField { }
     #endregion
 
-    #region UsrPickingOrder
+    #region UsrASPickingOrder
     [PXDBInt]
-[PXUIField(DisplayName="Picking Order")]
-    public virtual int? UsrPickingOrder { get; set; }
-    public abstract class usrPickingOrder : IBqlField { }
+    [PXUIField(DisplayName="Picking Order")]
+    public virtual int? UsrASPickingOrder { get; set; }
+    public abstract class usrASPickingOrder : IBqlField { }
     #endregion
   }
 }

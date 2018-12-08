@@ -3,13 +3,13 @@
         <Children Key="Columns">
             <AddItem>
                 <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
-                    <Prop Key="DataField" Value="UsrZone" />
+                    <Prop Key="DataField" Value="UsrASZone" />
                     <Prop Key="Width" Value="128" />
                 </PXGridColumn>
             </AddItem>
             <AddItem>
                 <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
-                    <Prop Key="DataField" Value="UsrPickingOrder" />
+                    <Prop Key="DataField" Value="UsrASPickingOrder" />
                     <Prop Key="Width" Value="70" />
                 </PXGridColumn>
             </AddItem>

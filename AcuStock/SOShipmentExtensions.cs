@@ -16,21 +16,21 @@ namespace PX.Objects.SO
 {
   public class SOShipmentExt : PXCacheExtension<PX.Objects.SO.SOShipment>
   {
-    #region UsrPickStatus
+    #region UsrASPickStatus
     [PXDBString(2)]
     [PXUIField(DisplayName="Pick Status")]
     [PXDefault(TypeCode.String, "1")]
     [PXStringList(new string[] {"1","2","3","4","5","6"}, new string[] {"Open","Assigned","Partially Picked","Picked","Packed","Shipped"})]
-    public virtual string UsrPickStatus { get; set; }
-    public abstract class usrPickStatus : IBqlField { }
+    public virtual string UsrASPickStatus { get; set; }
+    public abstract class usrASPickStatus : IBqlField { }
     #endregion
 
-    #region UsrPickDevice
+    #region UsrASPickDevice
     [PXDBString(66)]
     [PXUIField(DisplayName="Pick Device")]
 
-    public virtual string UsrPickDevice { get; set; }
-    public abstract class usrPickDevice : IBqlField { }
+    public virtual string UsrASPickDevice { get; set; }
+    public abstract class usrASPickDevice : IBqlField { }
     #endregion
   }
 }

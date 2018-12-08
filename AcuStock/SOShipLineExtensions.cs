@@ -15,13 +15,13 @@ namespace PX.Objects.SO
 {
   public class SOShipLineExt : PXCacheExtension<PX.Objects.SO.SOShipLine>
   {
-    #region UsrQtyPicked
+    #region UsrASQtyPicked
     [PXDBDecimal]
     [PXDefault(TypeCode.Decimal, "0.0")]
     [PXUIField(DisplayName="Picked Qty.", Enabled=false)]
 
-    public virtual Decimal? UsrQtyPicked { get; set; }
-    public abstract class usrQtyPicked : IBqlField { }
+    public virtual Decimal? UsrASQtyPicked { get; set; }
+    public abstract class usrASQtyPicked : IBqlField { }
     #endregion
   }
 }

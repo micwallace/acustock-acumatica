@@ -1,3 +1,3 @@
-﻿<Table TableName="soshipline">
-    <Column TableName="soshipline" ColumnName="UsrQtyPicked" ColumnType="decimal" AllowNull="True" DecimalPrecision="2" DecimalLength="38" IsNewColumn="True" IsUnicode="True" />
+﻿<Table TableName="SOShipLine">
+    <Column TableName="SOShipLine" ColumnName="UsrASQtyPicked" ColumnType="decimal" AllowNull="True" DecimalPrecision="2" DecimalLength="38" IsNewColumn="True" IsUnicode="True" />
 </Table>

@@ -28,7 +28,6 @@ using POReceipt = PX.Objects.PO.POReceipt;
 using POReceiptLine = PX.Objects.PO.POReceiptLine;
 using System.Diagnostics;
 using PX.Objects.PO;
-using PX.Objects.AR.MigrationMode;
 using PX.Objects.Common;
 using PX.Objects;
 using PX.Objects.SO;
@@ -47,11 +46,11 @@ namespace PX.Objects.SO
       if (row == null)
         return;
 
-      PXUIFieldAttribute.SetEnabled<SOShipLineExt.usrQtyPicked>(cache, e.Row, (row.LocationID > 0));
+      PXUIFieldAttribute.SetEnabled<SOShipLineExt.usrASQtyPicked>(cache, e.Row, (row.LocationID > 0));
 
     }  
 
-    protected void SOShipLine_UsrQtyPicked_FieldUpdated(PXCache cache, PXFieldUpdatedEventArgs e){
+    protected void SOShipLine_UsrASQtyPicked_FieldUpdated(PXCache cache, PXFieldUpdatedEventArgs e){
       
       if (!e.ExternalCall) return;
       
@@ -59,7 +58,7 @@ namespace PX.Objects.SO
       
       var rowExt = row.GetExtension<SOShipLineExt>();
       
-      decimal? qty = rowExt.UsrQtyPicked;
+      decimal? qty = rowExt.UsrASQtyPicked;
 
       foreach (SOShipLineSplit split in Base.splits.Select()){
         
@@ -67,8 +66,8 @@ namespace PX.Objects.SO
         
         qty -= pickQty;
 
-        Base.splits.Cache.SetValue<SOTableShipLineSplitExt.usrQtyPicked>(split, pickQty);
-        Base.splits.Cache.SetValue<SOShipLineSplitExt.usrQtyPicked>(split, pickQty);
+        Base.splits.Cache.SetValue<SOTableShipLineSplitExt.usrASQtyPicked>(split, pickQty);
+        Base.splits.Cache.SetValue<SOShipLineSplitExt.usrASQtyPicked>(split, pickQty);
         Base.splits.Cache.SetStatus(split, PXEntryStatus.Modified);
         Base.splits.Cache.IsDirty = true;
         
@@ -76,7 +75,7 @@ namespace PX.Objects.SO
 
     }
 
-    protected void SOShipLineSplit_UsrQtyPicked_FieldVerifying(PXCache cache, PXFieldVerifyingEventArgs e){
+    protected void SOShipLineSplit_UsrASQtyPicked_FieldVerifying(PXCache cache, PXFieldVerifyingEventArgs e){
       
       var row = (SOShipLineSplit) e.Row;
       var qty = (decimal) e.NewValue;
@@ -90,28 +89,28 @@ namespace PX.Objects.SO
         var row = (SOShipLineSplit) e.Row;
         SOShipLineSplitExt splitExt = row.GetExtension<SOShipLineSplitExt>();
 
-        if (splitExt.UsrQtyPicked > 0 && Base.Transactions.Current != null){
+        if (splitExt.UsrASQtyPicked > 0 && Base.Transactions.Current != null){
             SOShipLineExt lineExt = Base.Transactions.Current.GetExtension<SOShipLineExt>();
-            Base.Transactions.Cache.SetValue<SOShipLineExt.usrQtyPicked>(Base.Transactions.Current, (lineExt.UsrQtyPicked + splitExt.UsrQtyPicked));
+            Base.Transactions.Cache.SetValue<SOShipLineExt.usrASQtyPicked>(Base.Transactions.Current, (lineExt.UsrASQtyPicked + splitExt.UsrASQtyPicked));
         }
     }*/
 
-    protected void SOShipLineSplit_UsrQtyPicked_FieldUpdated(PXCache cache, PXFieldUpdatedEventArgs e){
+    protected void SOShipLineSplit_UsrASQtyPicked_FieldUpdated(PXCache cache, PXFieldUpdatedEventArgs e){
         var row = (SOShipLineSplit) e.Row;
 
         //if (cache.GetStatus(row) == PXEntryStatus.Inserted)
             //return;
 
         SOShipLineSplitExt splitExt = row.GetExtension<SOShipLineSplitExt>();
-        decimal? diff = splitExt.UsrQtyPicked - ((decimal) e.OldValue);
+        decimal? diff = splitExt.UsrASQtyPicked - ((decimal) e.OldValue);
 
-        PXTrace.WriteInformation("Field updated, old value: " + ((decimal)e.OldValue) + " new: " + splitExt.UsrQtyPicked);
+        PXTrace.WriteInformation("Field updated, old value: " + ((decimal)e.OldValue) + " new: " + splitExt.UsrASQtyPicked);
 
-        //cache.SetValue<SOTableShipLineSplitExt.usrQtyPicked>(row, splitExt.UsrQtyPicked);
+        //cache.SetValue<SOTableShipLineSplitExt.usrASQtyPicked>(row, splitExt.UsrASQtyPicked);
 
         if (diff != 0 && Base.Transactions.Current != null){
             SOShipLineExt lineExt = Base.Transactions.Current.GetExtension<SOShipLineExt>();
-            Base.Transactions.Cache.SetValue<SOShipLineExt.usrQtyPicked>(Base.Transactions.Current, (lineExt.UsrQtyPicked + diff));
+            Base.Transactions.Cache.SetValue<SOShipLineExt.usrASQtyPicked>(Base.Transactions.Current, (lineExt.UsrASQtyPicked + diff));
         }
     }
 
@@ -123,13 +122,13 @@ namespace PX.Objects.SO
         var oldRow = (SOShipLineSplit) e.Row;
         SOShipLineSplitExt oldSplitExt = row.GetExtension<SOShipLineSplitExt>();
 
-        decimal? diff = splitExt.UsrQtyPicked - oldSplitExt.UsrQtyPicked;
+        decimal? diff = splitExt.UsrASQtyPicked - oldSplitExt.UsrASQtyPicked;
 
-        PXTrace.WriteInformation("Field updated, old value: " + oldSplitExt.UsrQtyPicked + " new: " + splitExt.UsrQtyPicked);
+        PXTrace.WriteInformation("Field updated, old value: " + oldSplitExt.UsrASQtyPicked + " new: " + splitExt.UsrASQtyPicked);
 
         if (diff != 0 && Base.Transactions.Current != null){
             SOShipLineExt lineExt = Base.Transactions.Current.GetExtension<SOShipLineExt>();
-            Base.Transactions.SetValueExt<SOShipLineExt.usrQtyPicked>(Base.Transactions.Current, (lineExt.UsrQtyPicked + diff));
+            Base.Transactions.SetValueExt<SOShipLineExt.usrASQtyPicked>(Base.Transactions.Current, (lineExt.UsrASQtyPicked + diff));
         }
     }*/
 
@@ -137,14 +136,14 @@ namespace PX.Objects.SO
         var row = (SOShipLineSplit) e.Row;
         SOShipLineSplitExt splitExt = row.GetExtension<SOShipLineSplitExt>();
 
-        if (splitExt.UsrQtyPicked > 0 && Base.Transactions.Current != null){
+        if (splitExt.UsrASQtyPicked > 0 && Base.Transactions.Current != null){
             SOShipLineExt lineExt = Base.Transactions.Current.GetExtension<SOShipLineExt>();
-            Base.Transactions.Cache.SetValue<SOShipLineExt.usrQtyPicked>(Base.Transactions.Current, (lineExt.UsrQtyPicked - splitExt.UsrQtyPicked));
+            Base.Transactions.Cache.SetValue<SOShipLineExt.usrASQtyPicked>(Base.Transactions.Current, (lineExt.UsrASQtyPicked - splitExt.UsrASQtyPicked));
             //Base.Transactions.Update(Base.Transactions.Current);
         }
     }
 
-    protected void SOShipLine_UsrQtyPicked_FieldVerifying(PXCache cache, PXFieldVerifyingEventArgs e){
+    protected void SOShipLine_UsrASQtyPicked_FieldVerifying(PXCache cache, PXFieldVerifyingEventArgs e){
       
       var row = (SOShipLine) e.Row;
       var qty = (decimal) e.NewValue;

@@ -13,7 +13,7 @@ namespace AcuStock
     {
       [PXString(16)]
       [PXUIField(DisplayName="Version")]
-      [PXDefault(TypeCode.String, "1.0.2")]
+      [PXDefault(TypeCode.String, "1.1.1")]
       public virtual string Version { get; set; }
       public abstract class version : IBqlField { }
     }

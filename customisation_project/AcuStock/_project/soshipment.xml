@@ -1,4 +1,4 @@
-﻿<Table TableName="soshipment">
-    <Column TableName="soshipment" ColumnName="UsrPickStatus" ColumnType="string" AllowNull="True" MaxLength="2" DecimalPrecision="0" DecimalLength="0" IsNewColumn="True" IsUnicode="True" />
-    <Column TableName="soshipment" ColumnName="UsrPickDevice" ColumnType="string" AllowNull="True" MaxLength="128" DecimalPrecision="0" DecimalLength="0" IsNewColumn="True" IsUnicode="True" />
+﻿<Table TableName="SOShipment">
+    <Column TableName="SOShipment" ColumnName="UsrASPickStatus" ColumnType="string" AllowNull="True" MaxLength="2" DecimalPrecision="0" DecimalLength="0" IsNewColumn="True" IsUnicode="True" />
+    <Column TableName="SOShipment" ColumnName="UsrASPickDevice" ColumnType="string" AllowNull="True" MaxLength="128" DecimalPrecision="0" DecimalLength="0" IsNewColumn="True" IsUnicode="True" />
 </Table>
