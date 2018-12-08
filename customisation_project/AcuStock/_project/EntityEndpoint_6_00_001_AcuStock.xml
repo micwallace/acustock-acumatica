@@ -830,10 +830,10 @@
                     <To object="Results" field="Shipment_status" />
                 </Mapping>
                 <Mapping field="PickDevice">
-                    <To object="Results" field="Shipment_usrPickDevice" />
+                    <To object="Results" field="usrASPickDevice" />
                 </Mapping>
                 <Mapping field="PickStatus">
-                    <To object="Results" field="Shipment_usrPickStatus" />
+                    <To object="Results" field="usrASPickStatus" />
                 </Mapping>
             </Mappings>
         </TopLevelEntity>
