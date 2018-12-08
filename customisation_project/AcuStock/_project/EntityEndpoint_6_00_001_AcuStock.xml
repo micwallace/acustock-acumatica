@@ -799,7 +799,7 @@
                 <Field name="SplitLineNbr" type="IntValue" />
             </Fields>
         </Detail>
-        <TopLevelEntity name="ShipmentList" screen="GI000081">
+        <TopLevelEntity name="ShipmentList" screen="GI800081">
             <Fields>
                 <Field name="Operation" type="StringValue" />
                 <Field name="PickDevice" type="StringValue" />
