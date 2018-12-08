@@ -834,7 +834,7 @@
                     <To object="Results" field="Shipment_usrASPickDevice" />
                 </Mapping>
                 <Mapping field="PickStatus">
-                    <To object="Results" field="Shipment_usrASPickStatus" />
+                    <To object="Results" field="Shipment_usrFRPickStatus" />
                 </Mapping>
                 <Mapping field="WarehouseID">
                     <To object="Results" field="Warehouse_siteCD" />
