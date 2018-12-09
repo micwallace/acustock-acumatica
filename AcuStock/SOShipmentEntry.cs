@@ -48,7 +48,11 @@ namespace PX.Objects.SO
 
       PXUIFieldAttribute.SetEnabled<SOShipLineExt.usrASQtyPicked>(cache, e.Row, (row.LocationID > 0));
 
-    }  
+      var rowExt = row.GetExtension<SOShipLineExt>();
+
+      if (rowExt.UsrASQtyPicked == null)
+         Base.Transactions.Cache.SetValue<SOShipLineExt.usrASQtyPicked>(row, new Decimal?(0));
+    }
 
     protected void SOShipLine_UsrASQtyPicked_FieldUpdated(PXCache cache, PXFieldUpdatedEventArgs e){
       
@@ -76,7 +80,8 @@ namespace PX.Objects.SO
     }
 
     protected void SOShipLine_UsrASQtyPicked_FieldDefaulting(PXCache cache, PXFieldDefaultingEventArgs e){
-        e.NewValue = 0;
+        e.NewValue = new Decimal?(0);
+        e.Cancel = true;
     }
 
     protected void SOShipLineSplit_UsrASQtyPicked_FieldVerifying(PXCache cache, PXFieldVerifyingEventArgs e){
@@ -100,7 +105,8 @@ namespace PX.Objects.SO
     }*/
 
     protected void SOShipLineSplit_UsrASQtyPicked_FieldDefaulting(PXCache cache, PXFieldDefaultingEventArgs e){
-        e.NewValue = 0;
+        e.NewValue = new Decimal?(0);
+        e.Cancel = true;
     }
 
     protected void SOShipLineSplit_UsrASQtyPicked_FieldUpdated(PXCache cache, PXFieldUpdatedEventArgs e){
@@ -110,15 +116,17 @@ namespace PX.Objects.SO
             //return;
 
         SOShipLineSplitExt splitExt = row.GetExtension<SOShipLineSplitExt>();
-        decimal? diff = splitExt.UsrASQtyPicked - ((decimal) e.OldValue);
+        decimal? old = e.OldValue != null ? ((decimal?) e.OldValue) : new Decimal?(0);
+        decimal? diff = splitExt.UsrASQtyPicked - old;
 
-        PXTrace.WriteInformation("Field updated, old value: " + ((decimal)e.OldValue) + " new: " + splitExt.UsrASQtyPicked);
+        //PXTrace.WriteInformation("Field updated, old value: " + old + " new: " + splitExt.UsrASQtyPicked);
 
         //cache.SetValue<SOTableShipLineSplitExt.usrASQtyPicked>(row, splitExt.UsrASQtyPicked);
 
         if (diff != 0 && Base.Transactions.Current != null){
             SOShipLineExt lineExt = Base.Transactions.Current.GetExtension<SOShipLineExt>();
-            Base.Transactions.Cache.SetValue<SOShipLineExt.usrASQtyPicked>(Base.Transactions.Current, (lineExt.UsrASQtyPicked + diff));
+            decimal? current = lineExt.UsrASQtyPicked != null ? lineExt.UsrASQtyPicked : new Decimal?(0);
+            Base.Transactions.Cache.SetValue<SOShipLineExt.usrASQtyPicked>(Base.Transactions.Current, (current + diff));
         }
     }
 
