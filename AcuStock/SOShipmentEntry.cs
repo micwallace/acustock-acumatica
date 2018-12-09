@@ -75,6 +75,10 @@ namespace PX.Objects.SO
 
     }
 
+    protected void SOShipLine_UsrASQtyPicked_FieldDefaulting(PXCache cache, PXFieldDefaultingEventArgs e){
+        e.NewValue = 0;
+    }
+
     protected void SOShipLineSplit_UsrASQtyPicked_FieldVerifying(PXCache cache, PXFieldVerifyingEventArgs e){
       
       var row = (SOShipLineSplit) e.Row;
@@ -94,6 +98,10 @@ namespace PX.Objects.SO
             Base.Transactions.Cache.SetValue<SOShipLineExt.usrASQtyPicked>(Base.Transactions.Current, (lineExt.UsrASQtyPicked + splitExt.UsrASQtyPicked));
         }
     }*/
+
+    protected void SOShipLineSplit_UsrASQtyPicked_FieldDefaulting(PXCache cache, PXFieldDefaultingEventArgs e){
+        e.NewValue = 0;
+    }
 
     protected void SOShipLineSplit_UsrASQtyPicked_FieldUpdated(PXCache cache, PXFieldUpdatedEventArgs e){
         var row = (SOShipLineSplit) e.Row;
