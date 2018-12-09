@@ -19,8 +19,8 @@ namespace PX.Objects.SO
     #region UsrASPickStatus
     [PXDBString(2)]
     [PXUIField(DisplayName="Pick Status")]
-    [PXDefault(TypeCode.String, "1")]
-    [PXStringList(new string[] {"1","2","3","4","5","6"}, new string[] {"Open","Assigned","Partially Picked","Picked","Packed","Shipped"})]
+    [PXDefault(TypeCode.String, "1", PersistingCheck = PXPersistingCheck.Nothing)]
+    [PXStringList(new string[] {"1","2","3","4","5","6"}, new string[] {"Open","Assigned","Partial","Picked","Packed","Shipped"})]
     public virtual string UsrASPickStatus { get; set; }
     public abstract class usrASPickStatus : IBqlField { }
     #endregion
