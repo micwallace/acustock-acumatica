@@ -13,7 +13,7 @@ namespace PX.Objects.SO
   {
     #region UsrASQtyPicked
     [PXDBDecimal]
-    [PXDefault(TypeCode.Decimal, "0.0")]
+    [PXDefault(TypeCode.Decimal, "0.0", PersistingCheck = PXPersistingCheck.Nothing)]
     [PXUIField(DisplayName="Picked Qty.")]
     public virtual Decimal? UsrASQtyPicked { get; set; }
     public abstract class usrASQtyPicked : IBqlField { }
@@ -24,7 +24,7 @@ namespace PX.Objects.SO
   {
     #region UsrASQtyPicked
     [PXDBDecimal]
-    [PXDefault(TypeCode.Decimal, "0.0")]
+    [PXDefault(TypeCode.Decimal, "0.0", PersistingCheck = PXPersistingCheck.Nothing)]
     [PXUIField(DisplayName="Picked Qty.")]
     public virtual Decimal? UsrASQtyPicked { get; set; }
     public abstract class usrASQtyPicked : IBqlField { }
