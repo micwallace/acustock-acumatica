@@ -17,7 +17,7 @@ namespace PX.Objects.SO
   {
     #region UsrASQtyPicked
     [PXDBDecimal]
-    [PXDefault(TypeCode.Decimal, "0.0")]
+    [PXDefault(TypeCode.Decimal, "0.0", PersistingCheck = PXPersistingCheck.Nothing)]
     [PXUIField(DisplayName="Picked Qty.", Enabled=false)]
 
     public virtual Decimal? UsrASQtyPicked { get; set; }
