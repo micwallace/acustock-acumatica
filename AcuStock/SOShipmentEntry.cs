@@ -85,24 +85,15 @@ namespace PX.Objects.SO
     }
 
     protected void SOShipLineSplit_UsrASQtyPicked_FieldVerifying(PXCache cache, PXFieldVerifyingEventArgs e){
+
+      if (e.NewValue == null) return;
       
       var row = (SOShipLineSplit) e.Row;
       var qty = (decimal) e.NewValue;
 
       if (qty > row.Qty)
         throw new PXSetPropertyException("Picked quantity must be less or equal to the allocated quantity.");
-      
     }
-
-    /*protected void SOShipLineSplit_RowInserted(PXCache cache, PXRowInsertedEventArgs e){
-        var row = (SOShipLineSplit) e.Row;
-        SOShipLineSplitExt splitExt = row.GetExtension<SOShipLineSplitExt>();
-
-        if (splitExt.UsrASQtyPicked > 0 && Base.Transactions.Current != null){
-            SOShipLineExt lineExt = Base.Transactions.Current.GetExtension<SOShipLineExt>();
-            Base.Transactions.Cache.SetValue<SOShipLineExt.usrASQtyPicked>(Base.Transactions.Current, (lineExt.UsrASQtyPicked + splitExt.UsrASQtyPicked));
-        }
-    }*/
 
     protected void SOShipLineSplit_UsrASQtyPicked_FieldDefaulting(PXCache cache, PXFieldDefaultingEventArgs e){
         e.NewValue = new Decimal?(0);
@@ -110,18 +101,14 @@ namespace PX.Objects.SO
     }
 
     protected void SOShipLineSplit_UsrASQtyPicked_FieldUpdated(PXCache cache, PXFieldUpdatedEventArgs e){
-        var row = (SOShipLineSplit) e.Row;
 
-        //if (cache.GetStatus(row) == PXEntryStatus.Inserted)
-            //return;
+        var row = (SOShipLineSplit) e.Row;
 
         SOShipLineSplitExt splitExt = row.GetExtension<SOShipLineSplitExt>();
         decimal? old = e.OldValue != null ? ((decimal?) e.OldValue) : new Decimal?(0);
         decimal? diff = splitExt.UsrASQtyPicked - old;
 
         //PXTrace.WriteInformation("Field updated, old value: " + old + " new: " + splitExt.UsrASQtyPicked);
-
-        //cache.SetValue<SOTableShipLineSplitExt.usrASQtyPicked>(row, splitExt.UsrASQtyPicked);
 
         if (diff != 0 && Base.Transactions.Current != null){
             SOShipLineExt lineExt = Base.Transactions.Current.GetExtension<SOShipLineExt>();
@@ -130,43 +117,26 @@ namespace PX.Objects.SO
         }
     }
 
-     /*protected void SOShipLineSplit_RowUpdated(PXCache cache, PXRowUpdatedEventArgs e){
-
-        var row = (SOShipLineSplit) e.Row;
-        SOShipLineSplitExt splitExt = row.GetExtension<SOShipLineSplitExt>();
-
-        var oldRow = (SOShipLineSplit) e.Row;
-        SOShipLineSplitExt oldSplitExt = row.GetExtension<SOShipLineSplitExt>();
-
-        decimal? diff = splitExt.UsrASQtyPicked - oldSplitExt.UsrASQtyPicked;
-
-        PXTrace.WriteInformation("Field updated, old value: " + oldSplitExt.UsrASQtyPicked + " new: " + splitExt.UsrASQtyPicked);
-
-        if (diff != 0 && Base.Transactions.Current != null){
-            SOShipLineExt lineExt = Base.Transactions.Current.GetExtension<SOShipLineExt>();
-            Base.Transactions.SetValueExt<SOShipLineExt.usrASQtyPicked>(Base.Transactions.Current, (lineExt.UsrASQtyPicked + diff));
-        }
-    }*/
-
     protected void SOShipLineSplit_RowDeleted(PXCache cache, PXRowDeletedEventArgs e){
+
         var row = (SOShipLineSplit) e.Row;
         SOShipLineSplitExt splitExt = row.GetExtension<SOShipLineSplitExt>();
 
         if (splitExt.UsrASQtyPicked > 0 && Base.Transactions.Current != null){
             SOShipLineExt lineExt = Base.Transactions.Current.GetExtension<SOShipLineExt>();
             Base.Transactions.Cache.SetValue<SOShipLineExt.usrASQtyPicked>(Base.Transactions.Current, (lineExt.UsrASQtyPicked - splitExt.UsrASQtyPicked));
-            //Base.Transactions.Update(Base.Transactions.Current);
         }
     }
 
     protected void SOShipLine_UsrASQtyPicked_FieldVerifying(PXCache cache, PXFieldVerifyingEventArgs e){
+
+      if (e.NewValue == null) return;
       
       var row = (SOShipLine) e.Row;
       var qty = (decimal) e.NewValue;
 
       if (qty > row.ShippedQty)
         throw new PXSetPropertyException("Picked quantity must be less or equal to the shipped quantity.");
-      
     }
 
     #endregion
