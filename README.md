@@ -8,4 +8,4 @@ This repository hold the Acumatica customisation component of AcuStock.
 
 You can find the main repository (along with a detailed readme) here:
 
-(https://github.com/micwallace/acustock)[https://github.com/micwallace/acustock]
+[https://github.com/micwallace/acustock](https://github.com/micwallace/acustock)
