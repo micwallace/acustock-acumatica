@@ -1,8 +1,8 @@
-#AcuStock
+# AcuStock
 
-[![Logo](https://acustock.wallaceit.com.au/img/logo.png)](https://acustock.wallaceit.com.au/)
+[![Logo](https://acustock.wallaceit.com.au/img/logo-small.png)](https://acustock.wallaceit.com.au/)
 
-##Mobile warehouse management for Acumatica
+## Mobile warehouse management for Acumatica
 
 This repository hold the Acumatica customisation component of AcuStock.
 
