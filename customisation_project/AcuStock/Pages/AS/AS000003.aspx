@@ -22,12 +22,14 @@
 					<px:PXGridColumn DataField="SiteID" Width="120" ></px:PXGridColumn>
 					<px:PXGridColumn DataField="LocationID" Width="120" ></px:PXGridColumn>
 					<px:PXGridColumn DataField="QtyOnHand" Width="100" ></px:PXGridColumn>
-					<px:PXGridColumn DataField="QtyAvail" Width="100" ></px:PXGridColumn></Columns>
-				<Mode AllowAddNew="False" />
-				<Mode AllowDelete="False" />
-				<Mode AllowFormEdit="False" />
-				<Mode AllowUpdate="False" />
-				<Mode AutoInsert="False" /></px:PXGridLevel></Levels>
+					<px:PXGridColumn DataField="QtyAvail" Width="100" ></px:PXGridColumn>
+					<px:PXGridColumn DataField="QtyHardAvail" Width="100" />
+					<px:PXGridColumn DataField="QtySOShipped" Width="100" /></Columns>
+				<Mode AllowAddNew="False" ></Mode>
+				<Mode AllowDelete="False" ></Mode>
+				<Mode AllowFormEdit="False" ></Mode>
+				<Mode AllowUpdate="False" ></Mode>
+				<Mode AutoInsert="False" ></Mode></px:PXGridLevel></Levels>
 		<OnChangeCommand Command="Refresh" Target="SerialLotDetails" Enabled="True" ></OnChangeCommand>
 		<OnChangeCommand Target="SerialLotDetails" ></OnChangeCommand>
 		<AutoCallBack Target="SerialLotDetails" Command="Refresh" Enabled="True" ></AutoCallBack>
