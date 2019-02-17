@@ -106,32 +106,49 @@
         </layout>
         <data>
             <gidesign>
-                <row DesignID="098f6ba4-3f64-46f6-a2ff-662933b830f7" Name="ASShipmentList" FilterColCount="3" PageSize="0" ExportTop="0" NewRecordCreationEnabled="0" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="0">
-                    <gisort LineNbr="1" IsActive="1" DataFieldName="Shipment.shipDate" SortOrder="A" />
-                    <gitable Alias="Warehouse" Name="PX.Objects.IN.INSite">
-                        <giresult LineNbr="9" IsActive="1" Field="siteCD" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="a35f57f6-40de-4cb4-9ee4-350f96a36427" />
+                <row DesignID="6638b2ae-20cf-4616-9c01-5a7734051874" Name="ASTransferList" FilterColCount="3" PageSize="0" ExportTop="0" NewRecordCreationEnabled="0" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="0">
+                    <gigroupby LineNbr="1" IsActive="1" DataFieldName="Transfer.refNbr" />
+                    <ginavigationscreen ScreenID="IN304000" WindowMode="S">
+                        <ginavigationparameter ParamID="216" FieldName="RefNbr" ParameterName="Transfer.refNbr" IsExpression="0" />
+                    </ginavigationscreen>
+                    <gitable Alias="TransferShipment" Name="PX.Objects.SO.SOShipment">
+                        <giresult LineNbr="5" IsActive="1" Field="shipDate" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="2a90873a-aaad-4d77-a746-700131cc8dc4" />
+                        <giresult LineNbr="4" IsActive="1" Field="shipmentNbr" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="d696098d-cac8-4af0-804e-15b6fe350706" />
                     </gitable>
-                    <gitable Alias="Shipment" Name="PX.Objects.SO.SOShipment">
-                        <girelation LineNbr="1" ChildTable="Warehouse" IsActive="1" JoinType="I">
-                            <gion LineNbr="1" ParentField="siteID" Condition="E" ChildField="siteID" Operation="A" />
+                    <gitable Alias="TransferReceipt" Name="PX.Objects.IN.INTran" />
+                    <gitable Alias="TransferLine" Name="PX.Objects.IN.INTran">
+                        <girelation LineNbr="4" ChildTable="TransferReceipt" IsActive="1" JoinType="L">
+                            <gion LineNbr="8" ParentField="lineNbr" Condition="E" ChildField="origLineNbr" Operation="A" />
+                            <gion LineNbr="7" ParentField="refNbr" Condition="E" ChildField="origRefNbr" Operation="A" />
                         </girelation>
-                        <giresult LineNbr="8" IsActive="1" Field="shipmentQty" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="85b78b22-8e2f-4fa4-820d-0b3597c30ef8" />
-                        <giresult LineNbr="7" IsActive="1" Field="usrASPickDevice" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="0fbc155a-0b20-4ab8-b90c-818cc71d9c95" />
-                        <giresult LineNbr="6" IsActive="1" Field="usrFRPickStatus" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="8c271937-1070-4fde-81f3-d91d2b2931cc" />
-                        <giresult LineNbr="5" IsActive="1" Field="status" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="5dde127c-8a00-4cea-9a75-eada7a572ad1" />
-                        <giresult LineNbr="4" IsActive="1" Field="operation" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="25c348c1-c216-4ecc-9d7a-96a6029ac41d" />
-                        <giresult LineNbr="3" IsActive="1" Field="shipmentType" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="07c495e6-2ea2-44b8-b142-97de6040fc24" />
-                        <giresult LineNbr="2" IsActive="1" Field="shipDate" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="bb2050e5-2bc1-4f25-ae63-d3453561250c" />
-                        <giresult LineNbr="1" IsActive="1" Field="shipmentNbr" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="c237b7ff-83cf-4616-ab53-0da1839379b1" />
+                        <giresult LineNbr="7" IsActive="1" Field="=[TransferLine.Qty] - IsNull([TransferReceipt.Qty], 0)" Caption="RemainingQty" IsVisible="1" DefaultNav="1" AggregateFunction="SUM" QuickFilter="0" RowID="92d680cb-2a97-4d93-bcc5-e6d30dc71b7e" />
                     </gitable>
-                    <giwhere LineNbr="5" IsActive="1" DataFieldName="Shipment.operation" Condition="E" IsExpression="1" Value1="I" Operation="A" />
-                    <giwhere LineNbr="4" IsActive="1" DataFieldName="Shipment.usrFRPickStatus" Condition="E" IsExpression="1" Value1="3" CloseBrackets=")" Operation="A" />
-                    <giwhere LineNbr="3" IsActive="1" DataFieldName="Shipment.usrFRPickStatus" Condition="E" IsExpression="1" Value1="2" Operation="O" />
-                    <giwhere LineNbr="2" IsActive="1" OpenBrackets="(" DataFieldName="Shipment.usrFRPickStatus" Condition="E" IsExpression="1" Value1="1" Operation="O" />
-                    <giwhere LineNbr="1" IsActive="1" DataFieldName="Shipment.status" Condition="E" IsExpression="1" Value1="N" Operation="A" />
+                    <gitable Alias="Transfer" Name="PX.Objects.IN.INTransfer">
+                        <girelation LineNbr="3" ChildTable="TransferLine" IsActive="1" JoinType="I">
+                            <gion LineNbr="11" ParentField="docType" Condition="E" ChildField="docType" Operation="A" />
+                            <gion LineNbr="10" ParentField="refNbr" Condition="E" ChildField="refNbr" Operation="A" />
+                        </girelation>
+                        <girelation LineNbr="2" ChildTable="Site" IsActive="1" JoinType="I">
+                            <gion LineNbr="9" ParentField="toSiteID" Condition="E" ChildField="siteID" Operation="A" />
+                        </girelation>
+                        <girelation LineNbr="1" ChildTable="TransferShipment" IsActive="1" JoinType="L">
+                            <gion LineNbr="6" ParentField="sOShipmentNbr" Condition="E" ChildField="shipmentNbr" Operation="A" />
+                        </girelation>
+                        <giresult LineNbr="8" IsActive="1" Field="status" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="96d1d639-826f-448b-b892-34d9a740ecb4" />
+                        <giresult LineNbr="3" IsActive="1" Field="tranDesc" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="48f8a69c-8720-4d8a-91a1-3bfe31ff7ce4" />
+                        <giresult LineNbr="2" IsActive="1" Field="tranDate" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="8897df1d-2b84-4443-9ef9-3414bbbf4d05" />
+                        <giresult LineNbr="1" IsActive="1" Field="refNbr" IsVisible="1" DefaultNav="0" NavigateTo="IN304000" QuickFilter="0" RowID="fd382f65-e266-4de7-9046-43f2574e157b" />
+                    </gitable>
+                    <gitable Alias="Site" Name="PX.Objects.IN.INSite">
+                        <giresult LineNbr="6" IsActive="1" Field="siteCD" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="56f437b0-cead-4356-a173-d101e471ee93" />
+                    </gitable>
+                    <giwhere LineNbr="4" IsActive="1" DataFieldName="TransferReceipt.qty" Condition="NU" IsExpression="0" CloseBrackets=")" Operation="A" />
+                    <giwhere LineNbr="3" IsActive="1" OpenBrackets="(" DataFieldName="TransferReceipt.qty" Condition="L" IsExpression="0" Value1="=[TransferLine.Qty]" Operation="O" />
+                    <giwhere LineNbr="2" IsActive="1" DataFieldName="Transfer.transferType" Condition="E" IsExpression="1" Value1="2" Operation="A" />
+                    <giwhere LineNbr="1" IsActive="1" DataFieldName="Transfer.status" Condition="E" IsExpression="1" Value1="R" Operation="A" />
                     <sitemap linkname="toDesignById">
-                        <row Position="1089" Title="ASShipmentList" Url="~/genericinquiry/genericinquiry.aspx?id=098f6ba4-3f64-46f6-a2ff-662933b830f7" Expanded="0" IsFolder="0" ScreenID="GI800081" NodeID="fb426172-609d-4610-8057-c0c7f5b9f58f" ParentID="9d64ee06-5faa-4397-8687-510e4fe6d236">
-                            <muiscreen IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="1980" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4" />
+                        <row Position="1097" Title="ASTransferList" Url="~/genericinquiry/genericinquiry.aspx?id=6638b2ae-20cf-4616-9c01-5a7734051874" Expanded="0" IsFolder="0" ScreenID="GI800083" NodeID="92a21633-16bf-4998-8ed8-0a484c07e4f5" ParentID="9d64ee06-5faa-4397-8687-510e4fe6d236">
+                            <muiscreen IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="2030" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4" />
                             <sitemap Position="2311" Title="AcuStock" Expanded="0" IsFolder="0" NodeID="9d64ee06-5faa-4397-8687-510e4fe6d236">
                                 <sitemap Position="71" Title="Hidden" Url="~/Frames/Default.aspx" Expanded="0" IsFolder="0" ScreenID="HD000000" NodeID="84351bc9-bf6c-48b5-9dea-f8207283b64a">
                                     <sitemap Position="0" Title="Sitemap Root" Url="~/Frames/Default.aspx" Expanded="0" IsFolder="0" ScreenID="00000000" NodeID="00000000-0000-0000-0000-000000000000">
