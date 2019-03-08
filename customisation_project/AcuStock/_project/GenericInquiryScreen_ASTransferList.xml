@@ -111,17 +111,19 @@
                     <ginavigationscreen ScreenID="IN304000" WindowMode="S">
                         <ginavigationparameter ParamID="216" FieldName="RefNbr" ParameterName="Transfer.refNbr" IsExpression="0" />
                     </ginavigationscreen>
+                    <gitable Alias="TransitLineStatus" Name="PX.Objects.IN.INTransitLineStatus">
+                        <giresult LineNbr="8" IsActive="1" Field="qtyOnHand" Caption="RemainingQty" IsVisible="1" DefaultNav="1" AggregateFunction="SUM" QuickFilter="0" RowID="7f142ea6-46c7-46fc-9fa5-3509ae0bd171" />
+                    </gitable>
+                    <gitable Alias="TransitLine" Name="PX.Objects.IN.INTransitLine" />
                     <gitable Alias="TransferShipment" Name="PX.Objects.SO.SOShipment">
                         <giresult LineNbr="5" IsActive="1" Field="shipDate" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="2a90873a-aaad-4d77-a746-700131cc8dc4" />
                         <giresult LineNbr="4" IsActive="1" Field="shipmentNbr" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="d696098d-cac8-4af0-804e-15b6fe350706" />
                     </gitable>
-                    <gitable Alias="TransferReceipt" Name="PX.Objects.IN.INTran" />
                     <gitable Alias="TransferLine" Name="PX.Objects.IN.INTran">
-                        <girelation LineNbr="4" ChildTable="TransferReceipt" IsActive="1" JoinType="L">
-                            <gion LineNbr="8" ParentField="lineNbr" Condition="E" ChildField="origLineNbr" Operation="A" />
-                            <gion LineNbr="7" ParentField="refNbr" Condition="E" ChildField="origRefNbr" Operation="A" />
+                        <girelation LineNbr="4" ChildTable="TransitLineStatus" IsActive="1" JoinType="L">
+                            <gion LineNbr="8" ParentField="lineNbr" Condition="E" ChildField="transferLineNbr" Operation="A" />
+                            <gion LineNbr="7" ParentField="refNbr" Condition="E" ChildField="transferNbr" Operation="A" />
                         </girelation>
-                        <giresult LineNbr="7" IsActive="1" Field="=[TransferLine.Qty] - IsNull([TransferReceipt.Qty], 0)" Caption="RemainingQty" IsVisible="1" DefaultNav="1" AggregateFunction="SUM" QuickFilter="0" RowID="92d680cb-2a97-4d93-bcc5-e6d30dc71b7e" />
                     </gitable>
                     <gitable Alias="Transfer" Name="PX.Objects.IN.INTransfer">
                         <girelation LineNbr="3" ChildTable="TransferLine" IsActive="1" JoinType="I">
@@ -134,7 +136,7 @@
                         <girelation LineNbr="1" ChildTable="TransferShipment" IsActive="1" JoinType="L">
                             <gion LineNbr="6" ParentField="sOShipmentNbr" Condition="E" ChildField="shipmentNbr" Operation="A" />
                         </girelation>
-                        <giresult LineNbr="8" IsActive="1" Field="status" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="96d1d639-826f-448b-b892-34d9a740ecb4" />
+                        <giresult LineNbr="9" IsActive="1" Field="status" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="96d1d639-826f-448b-b892-34d9a740ecb4" />
                         <giresult LineNbr="3" IsActive="1" Field="tranDesc" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="48f8a69c-8720-4d8a-91a1-3bfe31ff7ce4" />
                         <giresult LineNbr="2" IsActive="1" Field="tranDate" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="8897df1d-2b84-4443-9ef9-3414bbbf4d05" />
                         <giresult LineNbr="1" IsActive="1" Field="refNbr" IsVisible="1" DefaultNav="0" NavigateTo="IN304000" QuickFilter="0" RowID="fd382f65-e266-4de7-9046-43f2574e157b" />
@@ -142,8 +144,7 @@
                     <gitable Alias="Site" Name="PX.Objects.IN.INSite">
                         <giresult LineNbr="6" IsActive="1" Field="siteCD" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="56f437b0-cead-4356-a173-d101e471ee93" />
                     </gitable>
-                    <giwhere LineNbr="4" IsActive="1" DataFieldName="TransferReceipt.qty" Condition="NU" IsExpression="0" CloseBrackets=")" Operation="A" />
-                    <giwhere LineNbr="3" IsActive="1" OpenBrackets="(" DataFieldName="TransferReceipt.qty" Condition="L" IsExpression="0" Value1="=[TransferLine.Qty]" Operation="O" />
+                    <giwhere LineNbr="5" IsActive="1" DataFieldName="TransitLineStatus.qtyOnHand" Condition="G" IsExpression="0" Value1="=0" Operation="A" />
                     <giwhere LineNbr="2" IsActive="1" DataFieldName="Transfer.transferType" Condition="E" IsExpression="1" Value1="2" Operation="A" />
                     <giwhere LineNbr="1" IsActive="1" DataFieldName="Transfer.status" Condition="E" IsExpression="1" Value1="R" Operation="A" />
                     <sitemap linkname="toDesignById">

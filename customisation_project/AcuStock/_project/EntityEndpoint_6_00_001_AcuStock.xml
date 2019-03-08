@@ -351,33 +351,113 @@
                 </Mapping>
             </Mappings>
         </TopLevelEntity>
-        <TopLevelEntity name="InventoryLotSerials" screen="AS000002">
+        <TopLevelEntity name="InventoryLocations2" screen="AS000005">
+            <Fields>
+                <Field name="InventoryID" type="StringValue" />
+                <Field name="Location" type="StringValue" />
+                <Field name="Results" type="InventoryLocResults[]" />
+                <Field name="Warehouse" type="StringValue" />
+            </Fields>
+            <Mappings>
+                <Mapping field="InventoryID">
+                    <To object="Filter" field="InventoryID" />
+                </Mapping>
+                <Mapping field="Location">
+                    <To object="Filter" field="LocationID" />
+                </Mapping>
+                <Mapping field="Warehouse">
+                    <To object="Filter" field="SiteID" />
+                </Mapping>
+                <Mapping field="Results">
+                    <Mapping field="Description">
+                        <To object="InventoryLocations" field="InventoryID_description" />
+                    </Mapping>
+                    <Mapping field="InventoryID">
+                        <To object="InventoryLocations" field="InventoryID" />
+                    </Mapping>
+                    <Mapping field="Location">
+                        <To object="InventoryLocations" field="LocationID" />
+                    </Mapping>
+                    <Mapping field="QtyAvailable">
+                        <To object="InventoryLocations" field="QtyAvail" />
+                    </Mapping>
+                    <Mapping field="QtyHardAvailable">
+                        <To object="InventoryLocations" field="QtyHardAvail" />
+                    </Mapping>
+                    <Mapping field="QtyOnHand">
+                        <To object="InventoryLocations" field="QtyOnHand" />
+                    </Mapping>
+                    <Mapping field="QtySOShipped">
+                        <To object="InventoryLocations" field="QtySOShipped" />
+                    </Mapping>
+                    <Mapping field="Warehouse">
+                        <To object="InventoryLocations" field="SiteID" />
+                    </Mapping>
+                </Mapping>
+            </Mappings>
+        </TopLevelEntity>
+        <Detail name="InventoryLocResults">
+            <Fields>
+                <Field name="Description" type="StringValue" />
+                <Field name="InventoryID" type="StringValue" />
+                <Field name="Location" type="StringValue" />
+                <Field name="QtyAvailable" type="DecimalValue" />
+                <Field name="QtyHardAvailable" type="DecimalValue" />
+                <Field name="QtyOnHand" type="DecimalValue" />
+                <Field name="QtySOShipped" type="DecimalValue" />
+                <Field name="Warehouse" type="StringValue" />
+            </Fields>
+        </Detail>
+        <Detail name="InventoryLotSerialResults">
             <Fields>
                 <Field name="InventoryID" type="StringValue" />
                 <Field name="Location" type="StringValue" />
                 <Field name="LotSerialNbr" type="StringValue" />
                 <Field name="QtyAvailable" type="DecimalValue" />
+                <Field name="QtyHardAvailable" type="DecimalValue" />
                 <Field name="QtyOnHand" type="DecimalValue" />
+                <Field name="Warehouse" type="StringValue" />
+            </Fields>
+        </Detail>
+        <TopLevelEntity name="InventoryLotSerials" screen="AS000002">
+            <Fields>
+                <Field name="InventoryID" type="StringValue" />
+                <Field name="Location" type="StringValue" />
+                <Field name="Results" type="InventoryLotSerialResults[]" />
                 <Field name="Warehouse" type="StringValue" />
             </Fields>
             <Mappings>
                 <Mapping field="InventoryID">
-                    <To object="InventoryLotSerials" field="InventoryID" />
+                    <To object="Filter" field="InventoryID" />
                 </Mapping>
                 <Mapping field="Location">
-                    <To object="InventoryLotSerials" field="LocationID" />
-                </Mapping>
-                <Mapping field="LotSerialNbr">
-                    <To object="InventoryLotSerials" field="LotSerialNbr" />
-                </Mapping>
-                <Mapping field="QtyAvailable">
-                    <To object="InventoryLotSerials" field="QtyAvail" />
-                </Mapping>
-                <Mapping field="QtyOnHand">
-                    <To object="InventoryLotSerials" field="QtyOnHand" />
+                    <To object="Filter" field="LocationID" />
                 </Mapping>
                 <Mapping field="Warehouse">
-                    <To object="InventoryLotSerials" field="SiteID" />
+                    <To object="Filter" field="SiteID" />
+                </Mapping>
+                <Mapping field="Results">
+                    <Mapping field="InventoryID">
+                        <To object="LotSerials" field="InventoryID" />
+                    </Mapping>
+                    <Mapping field="Location">
+                        <To object="LotSerials" field="LocationID" />
+                    </Mapping>
+                    <Mapping field="LotSerialNbr">
+                        <To object="LotSerials" field="LotSerialNbr" />
+                    </Mapping>
+                    <Mapping field="QtyAvailable">
+                        <To object="LotSerials" field="QtyAvail" />
+                    </Mapping>
+                    <Mapping field="QtyHardAvailable">
+                        <To object="LotSerials" field="QtyHardAvail" />
+                    </Mapping>
+                    <Mapping field="QtyOnHand">
+                        <To object="LotSerials" field="QtyOnHand" />
+                    </Mapping>
+                    <Mapping field="Warehouse">
+                        <To object="LotSerials" field="SiteID" />
+                    </Mapping>
                 </Mapping>
             </Mappings>
         </TopLevelEntity>
