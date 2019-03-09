@@ -3,8 +3,8 @@
 
 <asp:Content ID="cont1" ContentPlaceHolderID="phDS" Runat="Server">
 	<px:PXDataSource ID="ds" runat="server" Visible="False" Width="100%"
-        TypeName="AcuStock.LocationItems"
-        PrimaryView="InventoryLocations"
+        TypeName="AcuStock.InventoryLocations"
+        PrimaryView="Locations"
         >
 		<CallbackCommands>
 
@@ -13,18 +13,18 @@
 </asp:Content>
 <asp:Content ID="cont2" ContentPlaceHolderID="phF" Runat="Server"></asp:Content>
 <asp:Content ID="cont3" ContentPlaceHolderID="phG" Runat="Server">
-	<px:PXGrid AutoAdjustColumns="True" AllowPaging="True" AllowFilter="True" AllowSearch="True" Width="100%" SyncPosition="True" DataSourceID="ds" Height="150px" runat="server" ID="InventoryLocations">
+	<px:PXGrid AutoAdjustColumns="True" AllowPaging="True" AllowFilter="True" AllowSearch="True" Width="100%" SyncPosition="True" DataSourceID="ds" Height="150px" runat="server" ID="Locations">
 		<Levels>
-			<px:PXGridLevel DataMember="InventoryLocations" >
+			<px:PXGridLevel DataMember="Locations" >
 				<Columns>
 					<px:PXGridColumn DataField="InventoryItem__InventoryCD" Width="70" ></px:PXGridColumn>
 					<px:PXGridColumn DataField="InventoryID_description" Width="200" ></px:PXGridColumn>
-					<px:PXGridColumn DataField="SiteID" Width="120" ></px:PXGridColumn>
-					<px:PXGridColumn DataField="LocationID" Width="120" ></px:PXGridColumn>
+					<px:PXGridColumn DataField="INSite__SiteCD" Width="120" ></px:PXGridColumn>
+					<px:PXGridColumn DataField="INLocation__LocationCD" Width="120" ></px:PXGridColumn>
 					<px:PXGridColumn DataField="QtyOnHand" Width="100" ></px:PXGridColumn>
 					<px:PXGridColumn DataField="QtyAvail" Width="100" ></px:PXGridColumn>
-					<px:PXGridColumn DataField="QtyHardAvail" Width="100" />
-					<px:PXGridColumn DataField="QtySOShipped" Width="100" /></Columns>
+					<px:PXGridColumn DataField="QtyHardAvail" Width="100" ></px:PXGridColumn>
+					<px:PXGridColumn DataField="QtySOShipped" Width="100" ></px:PXGridColumn></Columns>
 				<Mode AllowAddNew="False" ></Mode>
 				<Mode AllowDelete="False" ></Mode>
 				<Mode AllowFormEdit="False" ></Mode>
@@ -32,9 +32,9 @@
 				<Mode AutoInsert="False" ></Mode></px:PXGridLevel></Levels>
 		<OnChangeCommand Command="Refresh" Target="SerialLotDetails" Enabled="True" ></OnChangeCommand>
 		<OnChangeCommand Target="SerialLotDetails" ></OnChangeCommand>
-		<AutoCallBack Target="SerialLotDetails" Command="Refresh" Enabled="True" ></AutoCallBack>
+		<AutoCallBack Target="LotSerialDetails" Command="Refresh" Enabled="True" ></AutoCallBack>
 		<AutoCallBack Handler="Refresh" ></AutoCallBack>
-		<AutoCallBack Target="SerialLotDetails" ></AutoCallBack>
+		<AutoCallBack Target="LotSerialDetails" ></AutoCallBack>
 		<Mode AllowAddNew="False" ></Mode>
 		<Mode AllowColMoving="True" ></Mode>
 		<Mode AllowColSizing="True" ></Mode>
@@ -62,13 +62,14 @@
 		<ActionBar>
 			<Actions>
 				<EditRecord Enabled="False" ></EditRecord></Actions></ActionBar></px:PXGrid>
-	<px:PXGrid AutoAdjustColumns="True" AllowFilter="True" AllowSearch="True" ID="SerialLotDetails" runat="server" DataSourceID="ds" Width="100%" Height="150px" SkinID="Details" AllowAutoHide="false">
+	<px:PXGrid AutoAdjustColumns="True" AllowFilter="True" AllowSearch="True" ID="LotSerialDetails" runat="server" DataSourceID="ds" Width="100%" Height="150px" SkinID="Details" AllowAutoHide="false">
 		<Levels>
-			<px:PXGridLevel DataMember="SerialLotDetails">
+			<px:PXGridLevel DataMember="LotSerialDetails">
 			    <Columns>
 				<px:PXGridColumn DataField="LotSerialNbr" Width="200" ></px:PXGridColumn>
 				<px:PXGridColumn DataField="QtyOnHand" Width="100" ></px:PXGridColumn>
-				<px:PXGridColumn DataField="QtyAvail" Width="100" ></px:PXGridColumn></Columns>
+				<px:PXGridColumn DataField="QtyAvail" Width="100" ></px:PXGridColumn>
+				<px:PXGridColumn DataField="QtyHardAvail" Width="100" /></Columns>
 			</px:PXGridLevel>
 		</Levels>
 		<AutoSize Container="Window" Enabled="True" MinHeight="150" ></AutoSize>
@@ -80,7 +81,7 @@
 				<Delete Enabled="False" ></Delete></Actions></ActionBar>
 	
 		<CallbackCommands>
-			<Refresh SelectControlsIDs="InventoryLocations" ></Refresh></CallbackCommands>
+			<Refresh SelectControlsIDs="Locations" ></Refresh></CallbackCommands>
 		<Mode AllowAddNew="False" ></Mode>
 		<Mode AllowColMoving="True" ></Mode>
 		<Mode AllowColSizing="True" ></Mode>

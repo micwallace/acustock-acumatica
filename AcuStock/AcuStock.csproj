@@ -64,10 +64,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AcuStockEndpointImpl.cs" />
-    <Compile Include="InventoryLocations.cs" />
+    <Compile Include="InventoryLocations2.cs" />
     <Compile Include="INLocationExtensions.cs" />
     <Compile Include="INReceiptEntry.cs" />
-    <Compile Include="LocationItems.cs" />
+    <Compile Include="InventoryLocations.cs" />
     <Compile Include="InventoryLotSerials.cs" />
     <Compile Include="SOShipLineExtensions.cs" />
     <Compile Include="SOShipLineSplitExtensions.cs" />
