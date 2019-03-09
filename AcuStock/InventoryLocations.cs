@@ -5,7 +5,7 @@ using PX.Objects.IN;
 
 namespace AcuStock
 {
-  public class LocationItems : PXGraph<LocationItems, INLocationStatus>
+  public class InventoryLocations : PXGraph<InventoryLocations, INLocationStatus>
   {
 
     public PXSelectJoin<INLocationStatus,
@@ -18,7 +18,7 @@ namespace AcuStock
                         >
                     >
                 >
-           > InventoryLocations;
+           > Locations;
     
      public PXSelectJoin<INLotSerialStatus,
               LeftJoin<InventoryItem,
@@ -30,8 +30,7 @@ namespace AcuStock
               >>,
               Where<INLocation.locationID, Equal<Current<INLocationStatus.locationID>>,
                  And<InventoryItem.inventoryID, Equal<Current<INLocationStatus.inventoryID>>>>
-         > SerialLotDetails;
-
+         > LotSerialDetails;
 
   }
 }
