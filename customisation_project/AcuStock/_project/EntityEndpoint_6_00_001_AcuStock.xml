@@ -1126,7 +1126,7 @@
                 <Field name="Date" type="DateTimeValue" />
                 <Field name="Description" type="StringValue" />
                 <Field name="ReferenceNbr" type="StringValue" />
-                <Field name="RemainingQty" type="StringValue" />
+                <Field name="RemainingQty" type="DecimalValue" />
                 <Field name="ShipmentDate" type="DateTimeValue" />
                 <Field name="ShipmentNbr" type="StringValue" />
                 <Field name="Status" type="StringValue" />
@@ -1143,7 +1143,7 @@
                     <To object="Results" field="Transfer_refNbr" />
                 </Mapping>
                 <Mapping field="RemainingQty">
-                    <To object="Results" field="TransferLine_Formula92d680cb2a974d93bcc5e6d30dc71b7e" />
+                    <To object="Results" field="TransitLineStatus_qtyOnHand" />
                 </Mapping>
                 <Mapping field="ShipmentDate">
                     <To object="Results" field="TransferShipment_shipDate" />
