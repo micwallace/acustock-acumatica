@@ -873,6 +873,9 @@
                     <Mapping field="PickedQty">
                         <To object="Transactions" field="UsrASQtyPicked" />
                     </Mapping>
+                    <Mapping field="InventoryType">
+                        <To object="Transactions" field="InventoryType" />
+                    </Mapping>
                     <Mapping field="Allocations">
                         <Mapping field="LineNbr">
                             <To object="splits" field="LineNbr" />
@@ -893,6 +896,7 @@
         </TopLevelEntity>
         <Detail name="ShipmentDetail">
             <Fields>
+                <Field name="InventoryType" type="StringValue" />
                 <Field name="PickedQty" type="DecimalValue" />
             </Fields>
         </Detail>
