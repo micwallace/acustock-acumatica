@@ -23,5 +23,14 @@ namespace PX.Objects.SO
     public virtual Decimal? UsrASQtyPicked { get; set; }
     public abstract class usrASQtyPicked : IBqlField { }
     #endregion
+
+    #region InventoryType
+	[PXString(1, IsFixed = true)]
+	[PXFormula(typeof(Selector<SOShipLine.inventoryID, InventoryItem.itemType>))]
+    [INItemTypes.List()]
+    [PXUIField(DisplayName="Item Type", Enabled=false, Visible=false)]
+    public virtual String InventoryType { get; set; }
+    public abstract class inventoryType : IBqlField { }
+    #endregion
   }
 }
