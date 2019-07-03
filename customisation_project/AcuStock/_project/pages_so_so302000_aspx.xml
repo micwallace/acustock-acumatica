@@ -45,4 +45,15 @@
     <PXSmartPanel ID="PanelLS" ParentId="phG_PanelLS" TypeFullName="PX.Web.UI.PXSmartPanel">
         <Prop Key="LoadOnDemand" Value="True" />
     </PXSmartPanel>
+    <PXGridLevel DataMember="OrderList" ParentId="phG_tab_Items#1_grid5_Levels#0" TypeFullName="PX.Web.UI.PXGridLevel">
+        <Children Key="Columns">
+            <AddItem>
+                <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
+                    <Prop Key="DataField" Value="SOOrder__ShipComplete" />
+                    <Prop Key="Width" Value="70" />
+                </PXGridColumn>
+            </AddItem>
+            <PXGridColumn DataField="ShipmentQty" OriginalIndex="3" />
+        </Children>
+    </PXGridLevel>
 </Page>
