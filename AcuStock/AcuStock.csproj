@@ -1,18 +1,19 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{9BC6D61A-5D4B-4D57-BC6B-5E3F9D04377E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AcuStock</RootNamespace>
     <AssemblyName>AcuStock</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
+    <WarningLevel>3</WarningLevel>
+    <FileVersion>20.108.0019</FileVersion>
+    <InformationalVersion>20.108.0019</InformationalVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,7 +22,6 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,31 +29,21 @@
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PX.Api.ContractBased">
-      <HintPath>..\..\..\..\Bin\PX.Api.ContractBased.dll</HintPath>
-    </Reference>
-    <Reference Include="PX.Api.ContractBased.Common">
-      <HintPath>..\..\..\..\Bin\PX.Api.ContractBased.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="PX.Api.Shared">
-      <HintPath>..\..\..\..\Bin\PX.Api.Shared.dll</HintPath>
-    </Reference>
-    <Reference Include="PX.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3b136cac2f602b8e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Bin\PX.Common.dll</HintPath>
+    <Reference Include="PX.Common">
+      <HintPath>D:\Program Files\Acumatica ERP\Acumatica2020\Bin\PX.Common.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="PX.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3b136cac2f602b8e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Bin\PX.Data.dll</HintPath>
+    <Reference Include="PX.CS.Contracts">
+      <HintPath>D:\Program Files\Acumatica ERP\Acumatica2020\Bin\PX.CS.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="PX.Data">
+      <HintPath>D:\Program Files\Acumatica ERP\Acumatica2020\Bin\PX.Data.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="PX.Objects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Bin\PX.Objects.DLL</HintPath>
+    <Reference Include="PX.Objects">
+      <HintPath>D:\Program Files\Acumatica ERP\Acumatica2020\Bin\PX.Objects.DLL</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -63,18 +53,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AcuStockEndpointImpl.cs" />
-    <Compile Include="InventoryLocations2.cs" />
-    <Compile Include="INLocationExtensions.cs" />
-    <Compile Include="INReceiptEntry.cs" />
-    <Compile Include="InventoryLocations.cs" />
-    <Compile Include="InventoryLotSerials.cs" />
-    <Compile Include="SOShipLineExtensions.cs" />
-    <Compile Include="SOShipLineSplitExtensions.cs" />
-    <Compile Include="SOShipmentEntry.cs" />
-    <Compile Include="SOShipmentExtensions.cs" />
-    <Compile Include="InventoryLookup.cs" />
-    <Compile Include="AcuStockConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
