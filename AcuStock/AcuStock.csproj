@@ -32,18 +32,18 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PX.Common">
-      <HintPath>D:\Program Files\Acumatica ERP\Acumatica2020\Bin\PX.Common.dll</HintPath>
+      <HintPath>..\..\..\Program Files\Acumatica ERP\Acumatica2021\Bin\PX.Common.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="PX.CS.Contracts">
-      <HintPath>D:\Program Files\Acumatica ERP\Acumatica2020\Bin\PX.CS.Contracts.dll</HintPath>
+      <HintPath>..\..\..\Program Files\Acumatica ERP\Acumatica2021\Bin\PX.CS.Contracts.dll</HintPath>
     </Reference>
     <Reference Include="PX.Data">
-      <HintPath>D:\Program Files\Acumatica ERP\Acumatica2020\Bin\PX.Data.dll</HintPath>
+      <HintPath>..\..\..\Program Files\Acumatica ERP\Acumatica2021\Bin\PX.Data.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="PX.Objects">
-      <HintPath>D:\Program Files\Acumatica ERP\Acumatica2020\Bin\PX.Objects.DLL</HintPath>
+      <HintPath>..\..\..\Program Files\Acumatica ERP\Acumatica2021\Bin\PX.Objects.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />

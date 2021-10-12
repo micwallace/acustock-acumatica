@@ -1,6 +1,6 @@
 ﻿<EntityEndpoint>
-    <Endpoint xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="AcuStock" version="6.00.001" systemContractVersion="2" xmlns="http://www.acumatica.com/entity/maintenance/5.31">
-        <ExtendsEndpoint name="Default" version="6.00.001" />
+    <Endpoint xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="AcuStock" version="20.200.001" systemContractVersion="4" xmlns="http://www.acumatica.com/entity/maintenance/5.31">
+        <ExtendsEndpoint name="Default" version="20.200.001" />
         <TopLevelEntity name="AcuStockConfig" screen="AS000004">
             <Fields>
                 <Field name="Version" type="StringValue" />
