@@ -1,12 +1,12 @@
 ﻿<GenericInquiryScreen>
     <data-set>
-        <relations format-version="3" relations-version="20170805" main-table="GIDesign" stable-sharing="True" file-name="(Name)">
+        <relations format-version="3" relations-version="20201113" main-table="GIDesign">
             <link from="GIFilter (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIGroupBy (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIMassAction (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIMassUpdateField (DesignID)" to="GIDesign (DesignID)" />
             <link from="GINavigationScreen (DesignID)" to="GIDesign (DesignID)" />
-            <link from="GINavigationParameter (DesignID, ScreenID)" to="GINavigationScreen (DesignID, ScreenID)" />
+            <link from="GINavigationParameter (DesignID, NavigationScreenLineNbr)" to="GINavigationScreen (DesignID, LineNbr)" />
             <link from="GIOn (DesignID, RelationNbr)" to="GIRelation (DesignID, LineNbr)" />
             <link from="GIRecordDefault (DesignID)" to="GIDesign (DesignID)" />
             <link from="GIRelation (DesignID, ParentTable)" to="GITable (DesignID, Alias)" />
@@ -21,6 +21,10 @@
             <link from="ListEntryPoint (ListScreenID)" to="SiteMap (ScreenID)" />
             <link from="SiteMap (ScreenID)" to="GIDesign (PrimaryScreenIDNew)" linkname="to1Screen" />
             <link from="SiteMap (NodeID)" to="SiteMap (ParentID)" type="WeakToParent" recursive-nesting="yes" include-parents="False" />
+            <link from="FilterHeader (ScreenID)" to="SiteMap (ScreenID)" />
+            <link from="FilterRow (FilterID)" to="FilterHeader (FilterID)" />
+            <link from="PivotTable (NoteID)" to="FilterHeader (RefNoteID)" />
+            <link from="PivotField (ScreenID, PivotTableID)" to="PivotTable (ScreenID, PivotTableID)" />
             <link from="MUIScreen (NodeID)" to="SiteMap (NodeID)" />
             <link from="MUIWorkspace (WorkspaceID)" to="MUIScreen (WorkspaceID)" type="FromMaster" linkname="workspaceToScreen" split-location="yes" updateable="True" />
             <link from="MUISubcategory (SubcategoryID)" to="MUIScreen (SubcategoryID)" type="FromMaster" updateable="True" />
@@ -40,6 +44,7 @@
             <link from="GISort (NoteID)" to="Note (NoteID)" type="Note" />
             <link from="GITable (NoteID)" to="Note (NoteID)" type="Note" />
             <link from="GIWhere (NoteID)" to="Note (NoteID)" type="Note" />
+            <link from="FilterHeader (NoteID)" to="Note (NoteID)" type="Note" />
         </relations>
         <layout>
             <table name="GIDesign">
@@ -53,7 +58,7 @@
                 <table name="GIMassAction" uplink="(DesignID) = (DesignID)" />
                 <table name="GIMassUpdateField" uplink="(DesignID) = (DesignID)" />
                 <table name="GINavigationScreen" uplink="(DesignID) = (DesignID)">
-                    <table name="GINavigationParameter" uplink="(DesignID, ScreenID) = (DesignID, ScreenID)" />
+                    <table name="GINavigationParameter" uplink="(DesignID, LineNbr) = (DesignID, NavigationScreenLineNbr)" />
                 </table>
                 <table name="GIRecordDefault" uplink="(DesignID) = (DesignID)" />
                 <table name="GISort" uplink="(DesignID) = (DesignID)">
@@ -77,6 +82,13 @@
                 </table>
                 <table name="SiteMap" uplink="(DesignID) = (Url)" recursion="(NodeID) = (ParentID)" linkname="toDesignById">
                     <table name="ListEntryPoint" uplink="(ScreenID) = (ListScreenID)" />
+                    <table name="FilterHeader" uplink="(ScreenID) = (ScreenID)">
+                        <table name="FilterRow" uplink="(FilterID) = (FilterID)" />
+                        <table name="PivotTable" uplink="(RefNoteID) = (NoteID)">
+                            <table name="PivotField" uplink="(ScreenID, PivotTableID) = (ScreenID, PivotTableID)" />
+                        </table>
+                        <table name="Note" uplink="(NoteID) = (NoteID)" />
+                    </table>
                     <table name="MUIScreen" uplink="(NodeID) = (NodeID)">
                         <table name="MUIPinnedScreen" uplink="(NodeID, WorkspaceID) = (NodeID, WorkspaceID)" />
                     </table>
@@ -84,6 +96,13 @@
                 </table>
                 <table name="SiteMap" uplink="(Name) = (Url)" recursion="(NodeID) = (ParentID)" linkname="toDesignByName">
                     <table name="ListEntryPoint" uplink="(ScreenID) = (ListScreenID)" />
+                    <table name="FilterHeader" uplink="(ScreenID) = (ScreenID)">
+                        <table name="FilterRow" uplink="(FilterID) = (FilterID)" />
+                        <table name="PivotTable" uplink="(RefNoteID) = (NoteID)">
+                            <table name="PivotField" uplink="(ScreenID, PivotTableID) = (ScreenID, PivotTableID)" />
+                        </table>
+                        <table name="Note" uplink="(NoteID) = (NoteID)" />
+                    </table>
                     <table name="MUIScreen" uplink="(NodeID) = (NodeID)">
                         <table name="MUIPinnedScreen" uplink="(NodeID, WorkspaceID) = (NodeID, WorkspaceID)" />
                     </table>
@@ -91,6 +110,13 @@
                 </table>
                 <table name="SiteMap" uplink="(PrimaryScreenIDNew) = (ScreenID)" recursion="(NodeID) = (ParentID)" linkname="to1Screen">
                     <table name="ListEntryPoint" uplink="(ScreenID) = (ListScreenID)" />
+                    <table name="FilterHeader" uplink="(ScreenID) = (ScreenID)">
+                        <table name="FilterRow" uplink="(FilterID) = (FilterID)" />
+                        <table name="PivotTable" uplink="(RefNoteID) = (NoteID)">
+                            <table name="PivotField" uplink="(ScreenID, PivotTableID) = (ScreenID, PivotTableID)" />
+                        </table>
+                        <table name="Note" uplink="(NoteID) = (NoteID)" />
+                    </table>
                     <table name="MUIScreen" uplink="(NodeID) = (NodeID)">
                         <table name="MUIPinnedScreen" uplink="(NodeID, WorkspaceID) = (NodeID, WorkspaceID)" />
                     </table>
@@ -105,69 +131,67 @@
             <table name="MUIArea" />
         </layout>
         <data>
-            <gidesign>
-                <row DesignID="6638b2ae-20cf-4616-9c01-5a7734051874" Name="ASTransferList" FilterColCount="3" PageSize="0" ExportTop="0" NewRecordCreationEnabled="0" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="0">
-                    <gigroupby LineNbr="1" IsActive="1" DataFieldName="Transfer.refNbr" />
-                    <ginavigationscreen ScreenID="IN304000" WindowMode="S">
-                        <ginavigationparameter ParamID="216" FieldName="RefNbr" ParameterName="Transfer.refNbr" IsExpression="0" />
-                    </ginavigationscreen>
-                    <gitable Alias="TransitLineStatus" Name="PX.Objects.IN.INTransitLineStatus">
-                        <giresult LineNbr="8" IsActive="1" Field="qtyOnHand" Caption="RemainingQty" IsVisible="1" DefaultNav="1" AggregateFunction="SUM" QuickFilter="0" RowID="7f142ea6-46c7-46fc-9fa5-3509ae0bd171" />
-                    </gitable>
-                    <gitable Alias="TransitLine" Name="PX.Objects.IN.INTransitLine" />
-                    <gitable Alias="TransferShipment" Name="PX.Objects.SO.SOShipment">
-                        <giresult LineNbr="5" IsActive="1" Field="shipDate" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="2a90873a-aaad-4d77-a746-700131cc8dc4" />
-                        <giresult LineNbr="4" IsActive="1" Field="shipmentNbr" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="d696098d-cac8-4af0-804e-15b6fe350706" />
-                    </gitable>
-                    <gitable Alias="TransferLine" Name="PX.Objects.IN.INTran">
-                        <girelation LineNbr="4" ChildTable="TransitLineStatus" IsActive="1" JoinType="L">
-                            <gion LineNbr="8" ParentField="lineNbr" Condition="E" ChildField="transferLineNbr" Operation="A" />
-                            <gion LineNbr="7" ParentField="refNbr" Condition="E" ChildField="transferNbr" Operation="A" />
-                        </girelation>
-                    </gitable>
-                    <gitable Alias="Transfer" Name="PX.Objects.IN.INTransfer">
-                        <girelation LineNbr="3" ChildTable="TransferLine" IsActive="1" JoinType="I">
-                            <gion LineNbr="11" ParentField="docType" Condition="E" ChildField="docType" Operation="A" />
-                            <gion LineNbr="10" ParentField="refNbr" Condition="E" ChildField="refNbr" Operation="A" />
-                        </girelation>
-                        <girelation LineNbr="2" ChildTable="Site" IsActive="1" JoinType="I">
-                            <gion LineNbr="9" ParentField="toSiteID" Condition="E" ChildField="siteID" Operation="A" />
-                        </girelation>
-                        <girelation LineNbr="1" ChildTable="TransferShipment" IsActive="1" JoinType="L">
-                            <gion LineNbr="6" ParentField="sOShipmentNbr" Condition="E" ChildField="shipmentNbr" Operation="A" />
-                        </girelation>
-                        <giresult LineNbr="9" IsActive="1" Field="status" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="96d1d639-826f-448b-b892-34d9a740ecb4" />
-                        <giresult LineNbr="3" IsActive="1" Field="tranDesc" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="48f8a69c-8720-4d8a-91a1-3bfe31ff7ce4" />
-                        <giresult LineNbr="2" IsActive="1" Field="tranDate" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="8897df1d-2b84-4443-9ef9-3414bbbf4d05" />
-                        <giresult LineNbr="1" IsActive="1" Field="refNbr" IsVisible="1" DefaultNav="0" NavigateTo="IN304000" QuickFilter="0" RowID="fd382f65-e266-4de7-9046-43f2574e157b" />
-                    </gitable>
-                    <gitable Alias="Site" Name="PX.Objects.IN.INSite">
-                        <giresult LineNbr="6" IsActive="1" Field="siteCD" IsVisible="1" DefaultNav="1" QuickFilter="0" RowID="56f437b0-cead-4356-a173-d101e471ee93" />
-                    </gitable>
-                    <giwhere LineNbr="5" IsActive="1" DataFieldName="TransitLineStatus.qtyOnHand" Condition="G" IsExpression="0" Value1="=0" Operation="A" />
-                    <giwhere LineNbr="2" IsActive="1" DataFieldName="Transfer.transferType" Condition="E" IsExpression="1" Value1="2" Operation="A" />
-                    <giwhere LineNbr="1" IsActive="1" DataFieldName="Transfer.status" Condition="E" IsExpression="1" Value1="R" Operation="A" />
-                    <sitemap linkname="toDesignById">
-                        <row Position="1097" Title="ASTransferList" Url="~/genericinquiry/genericinquiry.aspx?id=6638b2ae-20cf-4616-9c01-5a7734051874" Expanded="0" IsFolder="0" ScreenID="GI800083" NodeID="92a21633-16bf-4998-8ed8-0a484c07e4f5" ParentID="9d64ee06-5faa-4397-8687-510e4fe6d236">
-                            <muiscreen IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="2030" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4" />
-                            <sitemap Position="2311" Title="AcuStock" Expanded="0" IsFolder="0" NodeID="9d64ee06-5faa-4397-8687-510e4fe6d236">
-                                <sitemap Position="71" Title="Hidden" Url="~/Frames/Default.aspx" Expanded="0" IsFolder="0" ScreenID="HD000000" NodeID="84351bc9-bf6c-48b5-9dea-f8207283b64a">
-                                    <sitemap Position="0" Title="Sitemap Root" Url="~/Frames/Default.aspx" Expanded="0" IsFolder="0" ScreenID="00000000" NodeID="00000000-0000-0000-0000-000000000000">
-                                        <muiscreen IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="64" SubcategoryID="29d8e453-ee74-405d-abe1-930728d1f9ba" />
-                                    </sitemap>
-                                </sitemap>
-                            </sitemap>
+            <GIDesign>
+                <row DesignID="6638b2ae-20cf-4616-9c01-5a7734051874" Name="ASTransferList" FilterColCount="3" PageSize="0" ExportTop="0" NewRecordCreationEnabled="0" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="0" ShowDeletedRecords="0">
+                    <GIFilter LineNbr="1" IsActive="1" Name="WarehouseID" FieldName="Site.siteCD" DataType="string" DisplayName="WarehouseID" IsExpression="1" ColSpan="1" Required="1" />
+                    <GIGroupBy LineNbr="1" IsActive="1" DataFieldName="Transfer.refNbr" />
+                    <GINavigationScreen Link="IN304000" LineNbr="0" SortOrder="0" WindowMode="S" IsActive="1">
+                        <GINavigationParameter LineNbr="0" FieldName="RefNbr" ParameterName="Transfer.refNbr" IsExpression="0" />
+                    </GINavigationScreen>
+                    <GITable Alias="TransitLineStatus" Name="PX.Objects.IN.INTransitLineStatus">
+                        <GIResult LineNbr="8" IsActive="1" Field="qtyOnHand" Caption="RemainingQty" IsVisible="1" DefaultNav="1" AggregateFunction="SUM" QuickFilter="0" FastFilter="0" RowID="7f142ea6-46c7-46fc-9fa5-3509ae0bd171" />
+                    </GITable>
+                    <GITable Alias="TransitLine" Name="PX.Objects.IN.INTransitLine" />
+                    <GITable Alias="TransferShipment" Name="PX.Objects.SO.SOShipment">
+                        <GIResult LineNbr="5" IsActive="1" Field="shipDate" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="2a90873a-aaad-4d77-a746-700131cc8dc4" />
+                        <GIResult LineNbr="4" IsActive="1" Field="shipmentNbr" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="d696098d-cac8-4af0-804e-15b6fe350706" />
+                    </GITable>
+                    <GITable Alias="TransferLine" Name="PX.Objects.IN.INTran">
+                        <GIRelation LineNbr="4" ChildTable="TransitLineStatus" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="8" ParentField="lineNbr" Condition="E" ChildField="transferLineNbr" Operation="A" />
+                            <GIOn LineNbr="7" ParentField="refNbr" Condition="E" ChildField="transferNbr" Operation="A" />
+                        </GIRelation>
+                    </GITable>
+                    <GITable Alias="Transfer" Name="PX.Objects.IN.INTransfer">
+                        <GIRelation LineNbr="3" ChildTable="TransferLine" IsActive="1" JoinType="I">
+                            <GIOn LineNbr="11" ParentField="docType" Condition="E" ChildField="docType" Operation="A" />
+                            <GIOn LineNbr="10" ParentField="refNbr" Condition="E" ChildField="refNbr" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="2" ChildTable="Site" IsActive="1" JoinType="I">
+                            <GIOn LineNbr="9" ParentField="toSiteID" Condition="E" ChildField="siteID" Operation="A" />
+                        </GIRelation>
+                        <GIRelation LineNbr="1" ChildTable="TransferShipment" IsActive="1" JoinType="L">
+                            <GIOn LineNbr="6" ParentField="sOShipmentNbr" Condition="E" ChildField="shipmentNbr" Operation="A" />
+                        </GIRelation>
+                        <GIResult LineNbr="9" IsActive="1" Field="status" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="96d1d639-826f-448b-b892-34d9a740ecb4" />
+                        <GIResult LineNbr="3" IsActive="1" Field="tranDesc" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="48f8a69c-8720-4d8a-91a1-3bfe31ff7ce4" />
+                        <GIResult LineNbr="2" IsActive="1" Field="tranDate" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="8897df1d-2b84-4443-9ef9-3414bbbf4d05" />
+                        <GIResult LineNbr="1" IsActive="1" Field="refNbr" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="0" RowID="fd382f65-e266-4de7-9046-43f2574e157b" />
+                    </GITable>
+                    <GITable Alias="Site" Name="PX.Objects.IN.INSite">
+                        <GIResult LineNbr="6" IsActive="1" Field="siteCD" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="56f437b0-cead-4356-a173-d101e471ee93" />
+                    </GITable>
+                    <GIWhere LineNbr="6" IsActive="1" DataFieldName="Site.siteCD" Condition="E" IsExpression="0" Value1="[WarehouseID]" Operation="A" />
+                    <GIWhere LineNbr="5" IsActive="1" DataFieldName="TransitLineStatus.qtyOnHand" Condition="G" IsExpression="0" Value1="=0" Operation="A" />
+                    <GIWhere LineNbr="2" IsActive="1" DataFieldName="Transfer.transferType" Condition="E" IsExpression="1" Value1="2" Operation="A" />
+                    <GIWhere LineNbr="1" IsActive="1" DataFieldName="Transfer.status" Condition="E" IsExpression="1" Value1="R" Operation="A" />
+                    <SiteMap linkname="toDesignById">
+                        <row Position="1097" Title="ASTransferList" Url="~/genericinquiry/genericinquiry.aspx?id=6638b2ae-20cf-4616-9c01-5a7734051874" ScreenID="GI800083" NodeID="92a21633-16bf-4998-8ed8-0a484c07e4f5" ParentID="9d64ee06-5faa-4397-8687-510e4fe6d236">
+                            <MUIScreen IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="2030" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4">
+                                <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
+                            </MUIScreen>
                         </row>
-                    </sitemap>
+                    </SiteMap>
                 </row>
-            </gidesign>
-            <muiworkspace>
+            </GIDesign>
+            <MUIWorkspace>
+                <row IsPortal="1" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="5" Title="Data Views" Icon="poll" IsSystem="1" />
                 <row IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="32" Title="Data Views" Icon="poll" IsSystem="1" />
-            </muiworkspace>
-            <muisubcategory>
-                <row IsPortal="0" SubcategoryID="29d8e453-ee74-405d-abe1-930728d1f9ba" Order="1478" Name="Dashboards" Icon="" IsSystem="1" />
+            </MUIWorkspace>
+            <MUISubcategory>
+                <row IsPortal="1" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4" Order="896" Name="Inquiries" Icon="" IsSystem="1" />
                 <row IsPortal="0" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4" Order="896" Name="Inquiries" Icon="" IsSystem="1" />
-            </muisubcategory>
+            </MUISubcategory>
         </data>
     </data-set>
 </GenericInquiryScreen>
